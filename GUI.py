@@ -36,8 +36,8 @@ class Grid:
 
     def draw(self, win):
         gap = int(self.width / 50)
+        thick = 1
         for i in range(self.rows + 1):
-            thick = 1
             pg.draw.line(win, BLACK, (0, i*gap), (self.width, i*gap), thick)
             pg.draw.line(win, BLACK, (i * gap, 0), (i * gap, self.height), thick)
         for i in range(self.rows):
@@ -105,7 +105,7 @@ def redraw_window(win, board, start_button, simulate):
     win.fill(WHITE)
     if simulate:
         board.simulate()
-        pg.time.wait(500)
+        pg.time.wait(400)
     board.draw(win)
     start_button.draw(win, simulate)
 

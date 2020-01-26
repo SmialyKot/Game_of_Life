@@ -9,7 +9,8 @@ def board_simulation(board):
                [1, -1],
                [-1, 1]
                ]
-
+    changes = {}
+    # TODO: fix cells moving through map
     def check_cell(x, y):
         adj_cells = 0
         for elements in directions:
@@ -25,8 +26,11 @@ def board_simulation(board):
             adj_cells = check_cell(rows, columns)
             if board[rows, columns] == 1:
                 if adj_cells > 3 or adj_cells < 2:
-                    board[rows, columns] = 0
+                    changes["{} {}".format(rows, columns)] = 0
             else:
                 if adj_cells == 3:
-                    board[rows, columns] = 1
+                    changes["{} {}".format(rows, columns)] = 1
+    for key, value in changes.items():
+        x, y = map(int, key.split())
+        board[x, y] = value
     return board

@@ -1,11 +1,10 @@
-from settings import *
 import numpy as np
 import pygame as pg
 from game import *
 
 
 class Grid:
-    board = np.zeros((50, 50), dtype=int)
+    board = np.zeros((TILES, TILES), dtype=int)
 
     def __init__(self, rows, cols, width, height):
         self.rows = rows
@@ -35,7 +34,7 @@ class Grid:
         self.update_model()
 
     def draw(self, win):
-        gap = int(self.width / 50)
+        gap = int(self.width / TILES)
         thick = 1
         for i in range(self.rows + 1):
             pg.draw.line(win, BLACK, (0, i*gap), (self.width, i*gap), thick)
@@ -46,7 +45,7 @@ class Grid:
 
     def click(self, pos):
         if pos[0] < self.width and pos[1] < self.height:
-            gap = self.width / 50
+            gap = self.width / TILES
             x = pos[0] // gap
             y = pos[1] // gap
             return int(y), int(x)
@@ -55,8 +54,8 @@ class Grid:
 
 
 class Tile:
-    rows = 50
-    cols = 50
+    rows = TILES
+    cols = TILES
 
     def __init__(self, value, row, col, width, height):
         self.value = value
@@ -69,7 +68,7 @@ class Tile:
         self.value = val
 
     def draw(self, win):
-        gap = int(self.width / 50)
+        gap = int(self.width / TILES)
         x = int(self.col * gap)
         y = int(self.row * gap)
         if self.value == 1:
@@ -113,8 +112,8 @@ def redraw_window(win, board, start_button, simulate):
 def main():
     win = pg.display.set_mode((WIDTH, HEIGHT + 80))
     pg.display.set_caption(TITLE)
-    board = Grid(50, 50, WIDTH, HEIGHT)
-    start_button = Button(75, 815, 100, 50)
+    board = Grid(TILES, TILES, WIDTH, HEIGHT)
+    start_button = Button(75, HEIGHT + 15, 100, 50)
     icon = pg.image.load('src/bacteria.png')
     pg.display.set_icon(icon)
     simulate = False

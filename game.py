@@ -13,16 +13,14 @@ def board_simulation(board):
                [-1, 1]
                ]
     changes = {}
-    # TODO: fix cells moving through map
 
     def check_cell(x, y):
         adj_cells = 0
         for elements in directions:
-            try:
+            if 0 <= x + elements[0] <= TILES - 1 and 0 <= y + elements[1] <= TILES - 1:
                 if board[x + elements[0], y + elements[1]] == 1:
                     adj_cells += 1
-            except:
-                pass
+
         return adj_cells
 
     for rows in range(TILES):

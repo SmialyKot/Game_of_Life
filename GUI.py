@@ -74,7 +74,8 @@ class Tile:
         if self.value == 1:
             pg.draw.rect(win, BLACK, (x, y, gap, gap))
       
-            
+
+# TODO create more buttons based on class button by inheritance
 class Button:
     
     def __init__(self, x, y, width, height):

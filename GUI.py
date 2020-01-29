@@ -1,6 +1,8 @@
 import numpy as np
 import pygame as pg
 from game import *
+import tkinter
+from tkinter import messagebox
 
 
 class Grid:
@@ -37,7 +39,7 @@ class Grid:
         gap = int(self.width / TILES)
         thick = 1
         for i in range(self.rows + 1):
-            pg.draw.line(win, BLACK, (0, i*gap), (self.width, i*gap), thick)
+            pg.draw.line(win, BLACK, (0, i * gap), (self.width, i * gap), thick)
             pg.draw.line(win, BLACK, (i * gap, 0), (i * gap, self.height), thick)
         for i in range(self.rows):
             for j in range(self.cols):
@@ -51,6 +53,13 @@ class Grid:
             return int(y), int(x)
         else:
             return None
+
+    def clear(self):
+        for i in range(self.rows):
+            for j in range(self.cols):
+                self.board[i][j] = 0
+                self.tiles[i][j].set(0)
+        self.update_model()
 
 
 class Tile:
@@ -73,26 +82,26 @@ class Tile:
         y = int(self.row * gap)
         if self.value == 1:
             pg.draw.rect(win, BLACK, (x, y, gap, gap))
-      
 
-# TODO create more buttons based on class button by inheritance
+
 class Button:
-    
-    def __init__(self, x, y, width, height):
+
+    def __init__(self, x, y, width, height, text):
         self.x = x
         self.y = y
         self.width = width
         self.height = height
-        self.text = "Start"
-        
-    def draw(self, win, clicked):
+        self.text = text
+
+    def draw(self, win, clicked=False):
         pg.draw.rect(win, BLACK, (self.x, self.y, self.width, self.height))
         font = pg.font.SysFont('Noto Sans', 30, bold=False, italic=False)
         color = WHITE
         if clicked:
             color = RED
         text = font.render(self.text, 1, color)
-        win.blit(text, (self.x + (int(self.width/2) - int(text.get_width()/2)), self.y + (int(self.height/2) - int(text.get_height()/2))))
+        win.blit(text, (self.x + (int(self.width / 2) - int(text.get_width() / 2)),
+                        self.y + (int(self.height / 2) - int(text.get_height() / 2))))
 
     def isOver(self, pos):
         if self.x < pos[0] < self.x + self.width:
@@ -101,20 +110,22 @@ class Button:
         return False
 
 
-def redraw_window(win, board, start_button, simulate):
+def redraw_window(win, board, start_button, clear_button, simulate):
     win.fill(WHITE)
     if simulate:
         board.simulate()
         pg.time.wait(400)
     board.draw(win)
     start_button.draw(win, simulate)
+    clear_button.draw(win)
 
 
 def main():
     win = pg.display.set_mode((WIDTH, HEIGHT + 80))
     pg.display.set_caption(TITLE)
     board = Grid(TILES, TILES, WIDTH, HEIGHT)
-    start_button = Button(75, HEIGHT + 15, 100, 50)
+    start_button = Button(75, HEIGHT + 15, 100, 50, "Start")
+    clear_button = Button(250, HEIGHT + 15, 100, 50, "Clear")
     icon = pg.image.load('src/bacteria.png')
     pg.display.set_icon(icon)
     simulate = False
@@ -128,15 +139,23 @@ def main():
                 clicked = board.click(pos)
                 if clicked is not None:
                     board.place(clicked[0], clicked[1])
-                if start_button.isOver(pos):
+                elif start_button.isOver(pos):
                     if simulate:
                         simulate = False
                     else:
                         simulate = True
-        redraw_window(win, board, start_button, simulate)
+                elif clear_button.isOver(pos):
+                    board.clear()
+
+        redraw_window(win, board, start_button, clear_button, simulate)
         pg.display.update()
 
 
 if __name__ == "__main__":
+    if TILES <= 25 or TILES > 60:
+        tkinter.Tk().wm_withdraw()
+        tkinter.messagebox.showwarning("SETTINGS ERROR", "The tiles amount should be larger than 25 and lower than 60\n"
+                                                         "Please change the settings")
+        tkinter.Tk().withdraw()
     pg.init()
     main()

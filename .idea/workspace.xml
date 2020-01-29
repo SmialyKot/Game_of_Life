@@ -4,7 +4,7 @@
     <list default="true" id="a35c7e53-e906-4458-9760-99853a0759a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580155875928</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed cells teleporting/moving through map">
+      <created>1580233012191</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1580233012191</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +152,7 @@
     <MESSAGE value="GUI Version" />
     <MESSAGE value="Fixed incorrect cell placement" />
     <MESSAGE value="General improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="General improvements" />
+    <MESSAGE value="Fixed cells teleporting/moving through map" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed cells teleporting/moving through map" />
   </component>
 </project>

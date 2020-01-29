@@ -5,7 +5,7 @@ RED = (255, 0, 0)
 
 # game settings
 # changing the tiles amount will automatically adjust all game parameters, but it is not advised to make
-# it lower than 15 and more than 60 for the current build
+# it lower than 25 and more than 60 for the current build
 TILES = 50
 WIDTH = TILES*16  # default 50 tiles * 16 = 800
 HEIGHT = TILES*16

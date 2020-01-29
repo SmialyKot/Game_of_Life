@@ -4,7 +4,6 @@
     <list default="true" id="a35c7e53-e906-4458-9760-99853a0759a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580233012191</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="'Clear button' and error pop up added">
+      <created>1580315313201</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1580315313201</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,6 +159,7 @@
     <MESSAGE value="Fixed incorrect cell placement" />
     <MESSAGE value="General improvements" />
     <MESSAGE value="Fixed cells teleporting/moving through map" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed cells teleporting/moving through map" />
+    <MESSAGE value="'Clear button' and error pop up added" />
+    <option name="LAST_COMMIT_MESSAGE" value="'Clear button' and error pop up added" />
   </component>
 </project>

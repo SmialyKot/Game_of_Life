@@ -13,18 +13,13 @@ class Grid:
         self.cols = cols
         self.width = width
         self.height = height
-        self.model = None
         self.tiles = [[Tile(self.board[i][j], i, j, width, height) for j in range(cols)] for i in range(rows)]
-
-    def update_model(self):
-        self.model = [[self.tiles[i][j].value for j in range(self.cols)] for i in range(self.rows)]
 
     def simulate(self):
         self.board = board_simulation(self.board)
         for i in range(self.rows):
             for j in range(self.cols):
                 self.tiles[i][j].set(self.board[i][j])
-        self.update_model()
 
     def place(self, row, col):
         if self.tiles[row][col].value == 0:
@@ -33,7 +28,6 @@ class Grid:
         else:
             self.tiles[row][col].set(0)
             self.board[row][col] = 0
-        self.update_model()
 
     def draw(self, win):
         gap = int(self.width / TILES)
@@ -59,7 +53,6 @@ class Grid:
             for j in range(self.cols):
                 self.board[i][j] = 0
                 self.tiles[i][j].set(0)
-        self.update_model()
 
 
 class Tile:
